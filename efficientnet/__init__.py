@@ -49,7 +49,7 @@ def inject_keras_modules(func):
 
 
 def inject_tfkeras_modules(func):
-    import tensorflow.keras as tfkeras
+    import keras as tfkeras
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         kwargs['backend'] = tfkeras.backend
@@ -74,7 +74,7 @@ def init_keras_custom_objects():
 
 
 def init_tfkeras_custom_objects():
-    import tensorflow.keras as tfkeras
+    import keras as tfkeras
     from . import model
 
     custom_objects = {
