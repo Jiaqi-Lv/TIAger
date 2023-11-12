@@ -1,8 +1,8 @@
 import numpy as np
-from wholeslidedata.annotation.structures import Point
+from wholeslidedata.annotation.types import PointAnnotation
 from wholeslidedata.annotation.wholeslideannotation import WholeSlideAnnotation
 from wholeslidedata.image.wholeslideimage import WholeSlideImage
-from wholeslidedata.labels import Label
+from wholeslidedata.annotation.labels import Label
 
 
 def non_max_suppression_fast(boxes, overlapThresh):
@@ -92,7 +92,7 @@ def to_wsd(points):
     """Convert list of coordinates into WSD points"""
     new_points = []
     for i, point in enumerate(points):
-        p = Point(
+        p = PointAnnotation(
             index=i,
             label=Label("til", 1, color="blue"),
             coordinates=[point],

@@ -1,7 +1,7 @@
 import traceback
 import os
 import tensorflow as tf
-import tensorflow.compat.v1.keras.backend as K
+import keras.backend as K
 from pathlib import Path
 import shutil
 

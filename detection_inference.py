@@ -1,11 +1,11 @@
 import json
 import numpy as np
-from tensorflow.compat.v1.keras.applications import imagenet_utils
-from wholeslidedata.accessories.asap.annotationwriter import write_point_set
+from keras.applications import imagenet_utils
+from wholeslidedata.interoperability.asap.annotationwriter import write_point_set
 from typing import List
 from tqdm import tqdm
 from skimage.measure import label, regionprops
-import tensorflow.compat.v1.keras.backend as K
+import keras.backend as K
 
 from sklearn.neighbors import KDTree
 from utils import patchBoundsByOverlap, px_to_mm, get_model

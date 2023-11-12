@@ -6,13 +6,13 @@ import numpy as np
 import cv2
 from tqdm import tqdm
 from tensorflow.python.keras import backend as K
-from wholeslidedata.accessories.asap.imagewriter import WholeSlideMaskWriter
+from wholeslidedata.interoperability.asap.imagewriter import WholeSlideMaskWriter
 
 from utils import cropping_center, get_model
 from rw import open_multiresolutionimage_image
 import gc
 import click
-from tensorflow.compat.v1.keras.applications import imagenet_utils
+from keras.applications import imagenet_utils
 
 
 def prepare_patching(window_size, mask_size, dimensions, level, tissue_mask):

@@ -1,12 +1,23 @@
-from wholeslidedata.accessories.asap.imagewriter import WholeSlideMaskWriter, write_mask
+from wholeslidedata.interoperability.asap.imagewriter import WholeSlideMaskWriter, write_mask
 from wholeslidedata.annotation.wholeslideannotation import WholeSlideAnnotation
 from wholeslidedata.image.wholeslideimage import WholeSlideImage
 from wholeslidedata.iterators import create_batch_iterator
-from wholeslidedata.source.configuration.config import insert_paths_into_config
+# from wholeslidedata.source.configuration.config import insert_paths_into_config
 import numpy as np
 from concave_hull import concave_hull
+import yaml
 
-BULK_CONFIG = '/opt/algorithm/configs/bulk-inference-config/bulk.yml'
+def insert_paths_into_config(yaml_path, seg_path, bulk_path):
+    with open(yaml_path) as f:
+        doc = yaml.load(f)
+        doc['wholeslidedata']['default']['image_sources']['path'] = seg_path
+        doc['wholeslidedata']['default']['annotation_sources']['path'] = bulk_path
+    
+    with open(yaml_path, 'w') as f:
+        yaml.dump(doc, f)
+
+# BULK_CONFIG = '/opt/algorithm/configs/bulk-inference-config/bulk.yml'
+BULK_CONFIG = '/configs/bulk-inference-config/bulk.yml'
 
 def _create_tumor_bulk_mask(image_path, annotation_path):
     wsi = WholeSlideImage(image_path, backend="asap")

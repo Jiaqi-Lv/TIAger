@@ -33,7 +33,7 @@ import collections
 
 from six.moves import xrange
 # from tensorflow.compat.v1.keras.applications.imagenet_utils import _obtain_input_shape
-from tensorflow.compat.v1.keras.applications.imagenet_utils import preprocess_input as _preprocess_input
+from keras.applications.imagenet_utils import preprocess_input as _preprocess_input
 
 from . import get_submodules_from_kwargs, _obtain_input_shape
 from .weights import IMAGENET_WEIGHTS_PATH, IMAGENET_WEIGHTS_HASHES, NS_WEIGHTS_HASHES, NS_WEIGHTS_PATH
